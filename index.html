@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
+
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+	</script>
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+	<script src="script.js"></script>
+</head>
+
+<body id='BG'>
+
+	<!--DARK BACKGROUND INITIAL SCREEN-->
+
+	<div id="bg-fundo">
+		<div class="container">
+			<div class="row justify-content-center row_1">
+				<div class="col-6 start-fix d-flex justify-content-center" data-aos="fade-down" data-aos-easing="linear"
+					data-aos-duration="2000">
+					<div id="START" class="row">
+						<div class="col-12 logo_start d-flex align-items-center justify-content-center">
+							<img src="./assets/logo.png" alt="logo">
+						</div>
+						<div class="col-12 d-flex align-items-top justify-content-center">
+							<button type="button" class="btn btn-outline-dark btn-lg start-button" onclick="startGame()">START
+								GAME
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--RIDDLE FIRST DIALOG-->
+
+	<div id='riddle1' class="container">
+		<div class="row row_1 ml-5">
+			<div id="interaction_1" class="col-12 d-flex align-itens-center justify-content-center">
+				<div class="img_div d-flex align-items-end justify-content-end">
+					<img src="./assets/riddler3.png" alt="riddler">
+				</div>
+				<div class="speech_baloon1 d-flex align-items-top">
+					<img src="./assets/speech1.png" alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--BATMAN FIRST DIALOG-->
+	<div id='batman1' class="container-fluid">
+		<div class="row row_1">
+			<div id="interaction_2" class="col-8 d-flex align-itens-center justify-content-end">
+				<div class="speech_baloon2 d-flex align-items-top justify-content-center">
+					<img src="./assets/speech2.png" alt="">
+				</div>
+				<div class="img_div2 d-flex align-items-end justify-content-end">
+					<img src="./assets/batman.png" alt="batman">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- INSTRUCTIONS TEXT -->
+	<div id="instruc-text" class="container-fluid">
+		<div class="row row_1 d-flex justify-content-center align-items-center">
+			<div class="col-6">
+				<h3 class="instruc-text-style">
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aspernatur possimus totam numquam ea distinctio
+					ab modi sequi, iusto deserunt!
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque tempore dolorum, eum repudiandae quaerat ab
+					minima. Possimus nisi, placeat commodi saepe, libero assumenda at praesentium suscipit iste consequuntur
+					asperiores nostrum. <br>
+					PRESS SPACE TO BEGIN THE GAME
+					
+				</h3>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+	<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+
+</body>
+
+</html>

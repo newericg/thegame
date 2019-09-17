@@ -37,7 +37,8 @@ body {
     background-color: rgba(0, 0, 0, 0);
     height: 100%;
     width: 100%;
-    transition-duration: 3s;
+    transition-duration: 7s;
+    transition-delay: 1s;
     position: absolute;
     z-index: 60;
 }
@@ -97,7 +98,7 @@ body {
     position: absolute;
     z-index: 58;
     transition-duration: 2s;
-    
+
 }
 
 #batman1 {
@@ -106,7 +107,7 @@ body {
     z-index: 56;
     height: 100%;
     transition-duration: 2s;
-    
+
 }
 
 .img_div2 img {
@@ -119,7 +120,7 @@ body {
 
 #instruc-text {
     opacity: 0;
-    transition-duration: 3s;
+    transition-duration: 2s;
     position: absolute;
     z-index: 61;
     height: 100%;
@@ -128,4 +129,20 @@ body {
 
 .instruc-text-style {
     color: rgba(255, 255, 255, 0.849);
+}
+
+
+/* CANVAS  */
+
+canvas { 
+
+    
+    background-size: contain;
+    position: absolute;
+    z-index: 59;
+    left: 50%;
+    top: 50%;
+    margin-left: -500px;
+    margin-top: -280px;
+
 }

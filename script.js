@@ -43,6 +43,7 @@ const background3 = new Component(0, 0);
 const background4 = new Component(0, 0);
 const backgroundFixed = new Component(0, 0);
 
+const myObstacles = [];
 
 const myGameArea = {
   frames: 0,
@@ -90,6 +91,7 @@ const myGameArea = {
     } else {
       this.bg = new Image();
       this.bg.src = './assets/5.png';
+      // eslint-disable-next-line max-len
       ctx.drawImage(this.bg, background3.x -= 0.4, background.y, this.canvas.width, this.canvas.height);
     }
     if (background4.x <= -559) {
@@ -97,6 +99,7 @@ const myGameArea = {
     } else {
       this.bg = new Image();
       this.bg.src = './assets/6.png';
+      // eslint-disable-next-line max-len
       ctx.drawImage(this.bg, background4.x -= 1, background.y, this.canvas.width, this.canvas.height);
     }
     this.bg = new Image();
@@ -110,31 +113,42 @@ const myGameArea = {
 
 };
 
+
 // OBSTACULOS
 
-const myObstacles = [];
-
 function updateObstacles() {
-  for (let i = 0; i < myObstacles.length; i += 1) {
-    myObstacles[i].x += -1;
-    myObstacles[i].update();
-  }
   myGameArea.frames += 1;
+  console.log(myObstacles);
+  const minHeight = 20;
+  const maxHeight = 500;
+  const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
   if (myGameArea.frames % 120 === 0) {
-    const x = myGameArea.canvas.width;
-    const minHeight = 20;
-    const maxHeight = 200;
-    const height = Math.floor(
-      Math.random() * (maxHeight - minHeight + 1) + minHeight,
-    );
-    const minGap = 50;
-    const maxGap = 200;
-    const gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-    myObstacles.push(new Component(10, height, 'green', x, 0));
-    myObstacles.push(
-      new Component(10, x - height - gap, 'green', x, height + gap),
-    );
+    // eslint-disable-next-line no-undef
+    myObstacles.push(new Obstacles(50, 50, 1020, randomNumber, myGameArea.context));
   }
+  myObstacles.forEach((obstacle, index) => {
+    obstacle.draw();
+    obstacle.move();
+    if (obstacle.x <= -100) {
+      myObstacles.splice(index, 1);
+    }
+  });
+  // myObstacles[i].x += -1;
+  // console.log(myObstacles);
+  // if (myGameArea.frames % 120 === 0) {
+  //   const x = myGameArea.canvas.width;
+  //   const height = Math.floor(
+  //     );
+  //     const minGap = 50;
+  //     for (let i = 0; i < myObstacles.length; i += 1) {
+  //     const maxGap = 200;
+  //     const gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
+  //     myObstacles.push(new Component(10, height, 'green', x, 0));
+  //     myObstacles.push(
+  //       new Component(10, x - height - gap, 'green', x, height + gap),
+  //     );
+  //   }
+  // }
 }
 
 

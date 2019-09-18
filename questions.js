@@ -149,12 +149,21 @@ const elementd = document.getElementById('d').id
 
 let score = 0;
 
+function youLose2() {
+  const loseScreen = document.getElementById('youlose');
+
+  loseScreen.style.display = 'block';
+  setTimeout(() => {
+    loseScreen.style.opacity = '1';
+  }, 200);
+}
+
 function checkAnswerA() {
   if (elementa === questionSelected.correctAnswer) {
     score += 1
     return restartGame();
   }
-  return console.log('ERROUA')
+  return youLose2()
 }
 
 function checkAnswerB() {
@@ -162,19 +171,19 @@ function checkAnswerB() {
     score += 1
     return restartGame();
   }
-  return console.log('ERROUB')
+  return youLose2()
 }
 function checkAnswerC() {
   if (elementc === questionSelected.correctAnswer) {
     score += 1
     return restartGame();
   }
-  return console.log('ERROUC')
+  return youLose2()
 }
 function checkAnswerD() {
   if (elementd === questionSelected.correctAnswer) {
     score += 1
     return restartGame();
   }
-  return console.log('ERROUD')
+  return youLose2()
 }

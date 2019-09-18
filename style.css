@@ -83,7 +83,7 @@ body {
 }
 
 .speech_baloon1 {
-    width: 50%;
+    width: 20%;
 }
 
 .speech_baloon1 img {
@@ -158,8 +158,6 @@ body {
 /* CANVAS  */
 
 canvas { 
-
-    
     background-size: contain;
     position: absolute;
     z-index: 59;
@@ -167,5 +165,30 @@ canvas {
     top: 50%;
     margin-left: -500px;
     margin-top: -280px;
+}
 
+
+/* GAME OVER SCREEN */
+
+.game-over {
+    background-image: url(./assets/riddlerover.png);
+    background-size: contain;
+   
+    background-repeat: no-repeat;
+}
+
+
+.game-over div div h1 {
+    font-size: 150px;
+    color: rgb(64, 211, 64);
+}
+
+#youlose {
+    background-color: black;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition-duration: 2s;
+    position: absolute;
+    z-index: 191;
 }

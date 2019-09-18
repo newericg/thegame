@@ -62,9 +62,14 @@ const backgroundFixed = new Component(0, 0);
 
 
 let myObstacles = [];
+let myObstacles2 = [];
+
+
+// MAIN GAME FUNCTION
 
 const myGameArea = {
   frames: 0,
+  frames2: 0,
   start() {
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'canvas';
@@ -133,6 +138,26 @@ const myGameArea = {
   },
 };
 
+// NEW GAME FUNCTION
+
+function newGame() {
+  const loseScreen = document.getElementById('youlose');
+  const quest = document.getElementById('questions');
+
+  quest.style.display = 'none';
+  quest.style.opacity = '0';
+  player.y = 132;
+  player.x = 90;
+  myObstacles = [];
+  myObstacles2 = [];
+  loseScreen.style.opacity = '0';
+  setTimeout(() => {
+    myGameArea.start();
+  }, 400);
+  setTimeout(() => {
+    loseScreen.style.display = 'none';
+  }, 1800);
+}
 
 // OBSTACULOS
 
@@ -153,13 +178,42 @@ function updateObstacles() {
     }
   });
 }
+// OBSTACULOS2
+
+function updateObstacles2() {
+  myGameArea.frames2 += 1;
+  const minHeight = 20;
+  const maxHeight = 470;
+  const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
+  if (myGameArea.frames2 % 60 === 0) {
+    // eslint-disable-next-line no-undef
+    myObstacles2.push(new Obstacles2(40, 40, 1020, randomNumber, myGameArea.context));
+  }
+  myObstacles2.forEach((obstacle, index) => {
+    obstacle.draw();
+    obstacle.move();
+    if (obstacle.x <= -100) {
+      myObstacles2.splice(index, 1);
+    }
+  });
+}
+
+// LOSE SCREEN FUNCTION
+
+function youLose() {
+  const loseScreen = document.getElementById('youlose');
+
+  loseScreen.style.display = 'block';
+  setTimeout(() => {
+    loseScreen.style.opacity = '1';
+  }, 200);
+}
 
 
 // QUESTION SCREEN FUNCTION
 
 function startQuestion() {
   const quest = document.getElementById('questions');
-  const lastCanvas = document.getElementById('canvas');
   // eslint-disable-next-line no-undef
   createQuestion();
   quest.style.display = 'block';
@@ -168,20 +222,28 @@ function startQuestion() {
   }, 200);
   setTimeout(() => {
     myGameArea.clear();
-    lastCanvas.remove();
   }, 2500);
 }
 // CRASH CHECK
 
 function checkGameOver() {
   const crashed = myObstacles.some((obstacle) => player.crashWith(obstacle));
+  const crashed2 = myObstacles2.some((obstacle) => player.crashWith(obstacle));
+  const lastCanvas = document.getElementById('canvas');
   if (crashed) {
     myGameArea.stop();
     startQuestion();
     player.y = 132;
     player.x = 90;
     myObstacles = [];
+    myObstacles2 = [];
+    lastCanvas.remove();
     console.log('MORREU');
+  } else if (crashed2) {
+    myGameArea.stop();
+    youLose();
+    lastCanvas.remove();
+    console.log('GAME OVER');
   }
 }
 
@@ -203,6 +265,7 @@ function updateGameArea() {
   myGameArea.clear();
   myGameArea.update();
   updateObstacles();
+  updateObstacles2();
   checkGameOver();
 }
 

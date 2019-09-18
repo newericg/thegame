@@ -51,6 +51,11 @@ body {
     height: 50%;
 }
 
+.row_3 {
+    height: 100%;
+    width: 100%;
+}
+
 .logo_start img {
     height: 205px;
 }
@@ -129,6 +134,24 @@ body {
 
 .instruc-text-style {
     color: rgba(255, 255, 255, 0.849);
+}
+
+/* QUESTIOS STYLES */
+
+
+#questions {
+    height: 100%;
+    opacity: 0;
+    display: none;
+    position: absolute;
+    z-index: 90;
+    background-color: black;
+    transition-duration: 3s;
+}
+
+#question {
+    font-size: 30px;
+    color: rgb(11, 192, 11)
 }
 
 

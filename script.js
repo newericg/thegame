@@ -27,15 +27,32 @@ class Component {
     }
   }
 
-  jump() {
-    if (this.y < 390) {
-      this.gravitySpeed += this.gravity;
-      this.y += this.speedY + this.gravitySpeed;
-    }
+  left() {
+    return this.x;
+  }
+
+  right() {
+    return this.x + this.width;
+  }
+
+  top() {
+    return this.y;
+  }
+
+  bottom() {
+    return this.y + this.height;
+  }
+
+  crashWith(obstacle) {
+    return !(
+      this.bottom() < obstacle.top() || this.top() > obstacle.bottom()
+      || this.right() < obstacle.left()
+      || this.left() > obstacle.right()
+    );
   }
 }
 
-const player = new Component(90, 132, 8);
+const player = new Component(90, 132, 8, 155, 105);
 
 const background = new Component(0, 0);
 const background2 = new Component(0, 0);
@@ -43,7 +60,8 @@ const background3 = new Component(0, 0);
 const background4 = new Component(0, 0);
 const backgroundFixed = new Component(0, 0);
 
-const myObstacles = [];
+
+let myObstacles = [];
 
 const myGameArea = {
   frames: 0,
@@ -106,11 +124,13 @@ const myGameArea = {
     this.bg.src = './assets/7.png';
     ctx.drawImage(this.bg, backgroundFixed.x, background.y, this.canvas.width, this.canvas.height);
     this.img = new Image();
-    this.img.src = './assets/batman3.png';
+    this.img.src = './assets/batman4.png';
     // eslint-disable-next-line no-use-before-define
-    ctx.drawImage(this.img, player.x, player.y, 225, 115);
+    ctx.drawImage(this.img, player.x, player.y, 225, 145);
   },
-
+  stop() {
+    clearInterval(this.interval);
+  },
 };
 
 
@@ -118,13 +138,12 @@ const myGameArea = {
 
 function updateObstacles() {
   myGameArea.frames += 1;
-  console.log(myObstacles);
   const minHeight = 20;
-  const maxHeight = 500;
+  const maxHeight = 470;
   const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
   if (myGameArea.frames % 120 === 0) {
     // eslint-disable-next-line no-undef
-    myObstacles.push(new Obstacles(50, 50, 1020, randomNumber, myGameArea.context));
+    myObstacles.push(new Obstacles(40, 40, 1020, randomNumber, myGameArea.context));
   }
   myObstacles.forEach((obstacle, index) => {
     obstacle.draw();
@@ -133,24 +152,40 @@ function updateObstacles() {
       myObstacles.splice(index, 1);
     }
   });
-  // myObstacles[i].x += -1;
-  // console.log(myObstacles);
-  // if (myGameArea.frames % 120 === 0) {
-  //   const x = myGameArea.canvas.width;
-  //   const height = Math.floor(
-  //     );
-  //     const minGap = 50;
-  //     for (let i = 0; i < myObstacles.length; i += 1) {
-  //     const maxGap = 200;
-  //     const gap = Math.floor(Math.random() * (maxGap - minGap + 1) + minGap);
-  //     myObstacles.push(new Component(10, height, 'green', x, 0));
-  //     myObstacles.push(
-  //       new Component(10, x - height - gap, 'green', x, height + gap),
-  //     );
-  //   }
-  // }
 }
 
+
+// QUESTION SCREEN FUNCTION
+
+function startQuestion() {
+  const quest = document.getElementById('questions');
+  const lastCanvas = document.getElementById('canvas');
+  // eslint-disable-next-line no-undef
+  createQuestion();
+  quest.style.display = 'block';
+  setTimeout(() => {
+    quest.style.opacity = '0.95';
+  }, 200);
+  setTimeout(() => {
+    myGameArea.clear();
+    lastCanvas.remove();
+  }, 2500);
+}
+// CRASH CHECK
+
+function checkGameOver() {
+  const crashed = myObstacles.some((obstacle) => player.crashWith(obstacle));
+  if (crashed) {
+    myGameArea.stop();
+    startQuestion();
+    player.y = 132;
+    player.x = 90;
+    myObstacles = [];
+    console.log('MORREU');
+  }
+}
+
+// PLAYER MOVEMENT
 
 document.addEventListener('keydown', (event) => {
   if (event.keyCode === 38) {
@@ -162,10 +197,13 @@ document.addEventListener('keydown', (event) => {
   }
 });
 
+// GAME UPDATES
+
 function updateGameArea() {
   myGameArea.clear();
   myGameArea.update();
   updateObstacles();
+  checkGameOver();
 }
 
 

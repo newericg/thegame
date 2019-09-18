@@ -13,7 +13,24 @@ class Obstacles {
   }
 
   draw() {
-    this.ctx.fillStyle = 'red';
-    this.ctx.fillRect(this.x, this.y, this.width, this.height);
+    this.img = new Image();
+    this.img.src = './assets/riddlerlogo.png';
+    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+  }
+
+  left() {
+    return this.x;
+  }
+
+  right() {
+    return this.x + this.width;
+  }
+
+  top() {
+    return this.y;
+  }
+
+  bottom() {
+    return this.y + this.height;
   }
 }

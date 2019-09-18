@@ -1,3 +1,21 @@
+
+// MUSIC CONTROL
+
+function playMusic() {
+  if (!audio.play()) {
+    audio.play();
+  }
+}
+function altPlayMusic() {
+  if (!playMusic()) {
+    return playMusic();
+  }
+}
+
+function stopMusic() {
+  audio.pause();
+}
+
 // CANVAS GAME
 
 class Component {
@@ -71,6 +89,7 @@ const myGameArea = {
   frames: 0,
   frames2: 0,
   start() {
+    altPlayMusic();
     this.canvas = document.createElement('canvas');
     this.canvas.id = 'canvas';
     this.canvas.width = 1000;
@@ -132,6 +151,10 @@ const myGameArea = {
     this.img.src = './assets/batman4.png';
     // eslint-disable-next-line no-use-before-define
     ctx.drawImage(this.img, player.x, player.y, 225, 145);
+    ctx.font = '30px Verdana';
+    // Fill with gradient
+    ctx.fillStyle = '#3FA146';
+    ctx.fillText(`CORRECT QUESTIONS : ${questionScore}`, 600, 50);
   },
   stop() {
     clearInterval(this.interval);
@@ -150,6 +173,7 @@ function newGame() {
   player.x = 90;
   myObstacles = [];
   myObstacles2 = [];
+  questionScore = 0;
   loseScreen.style.opacity = '0';
   setTimeout(() => {
     myGameArea.start();
@@ -187,7 +211,7 @@ function updateObstacles2() {
   const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
   if (myGameArea.frames2 % 60 === 0) {
     // eslint-disable-next-line no-undef
-    myObstacles2.push(new Obstacles2(40, 40, 1020, randomNumber, myGameArea.context));
+    myObstacles2.push(new Obstacles2(40, 60, 1020, randomNumber, myGameArea.context));
   }
   myObstacles2.forEach((obstacle, index) => {
     obstacle.draw();
@@ -241,11 +265,31 @@ function checkGameOver() {
     console.log('MORREU');
   } else if (crashed2) {
     myGameArea.stop();
+    stopMusic();
     youLose();
+    questionScore = 0;
     lastCanvas.remove();
     console.log('GAME OVER');
   }
 }
+
+// CHECK GAME WIN
+
+function checkYouWin() {
+  const lastCanvas = document.getElementById('canvas');
+
+  if (questionScore >= 2) {
+    myGameArea.stop();
+    lastCanvas.remove();
+    const winScreen = document.getElementById('youwin');
+
+    winScreen.style.display = 'block';
+    setTimeout(() => {
+      winScreen.style.opacity = '1';
+    }, 200);
+  }
+}
+
 
 // PLAYER MOVEMENT
 
@@ -266,6 +310,7 @@ function updateGameArea() {
   myGameArea.update();
   updateObstacles();
   updateObstacles2();
+  checkYouWin();
   checkGameOver();
 }
 

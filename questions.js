@@ -34,7 +34,7 @@ const myQuestions = [{
 {
   question: 'What goes up but never comes down?',
   answers: {
-    a: 'Egg',
+    a: 'Age',
     b: 'Rocket',
     c: 'Smoke',
     d: 'Your ego',
@@ -91,13 +91,94 @@ const myQuestions = [{
   },
   correctAnswer: 'b',
 },
+{
+  question: 'I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I? ',
+  answers: {
+    a: 'Echo',
+    b: 'Voice',
+    c: 'Guitar',
+    d: 'Ideas',
+  },
+  correctAnswer: 'a',
+},
+{
+  question: 'I have cities, but no houses. I have mountains, but no trees. I have water, but no fish. What am I? ',
+  answers: {
+    a: 'A dream',
+    b: 'A map',
+    c: 'An Idea',
+    d: 'A game',
+  },
+  correctAnswer: 'b',
+},
+{
+  question: 'Jimmy’s mother had three children. The first was called April, the second was called May. What was the name of the third?',
+  answers: {
+    a: 'June',
+    b: 'Mary',
+    c: 'Jimmy',
+    d: 'February',
+  },
+  correctAnswer: 'c',
+},
+{
+  question: 'Feed me and I will live, but give me a drink and I will die. What am I?',
+  answers: {
+    a: '1st',
+    b: '',
+    c: 'Ice',
+    d: 'Fire',
+  },
+  correctAnswer: 'd',
+},
+{
+  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  answers: {
+    a: '1st',
+    b: '2nd',
+    c: '3rd',
+    d: '4th',
+  },
+  correctAnswer: 'b',
+},
+{
+  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  answers: {
+    a: '1st',
+    b: '2nd',
+    c: '3rd',
+    d: '4th',
+  },
+  correctAnswer: 'b',
+},
+{
+  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  answers: {
+    a: '1st',
+    b: '2nd',
+    c: '3rd',
+    d: '4th',
+  },
+  correctAnswer: 'b',
+},
+{
+  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  answers: {
+    a: '1st',
+    b: '2nd',
+    c: '3rd',
+    d: '4th',
+  },
+  correctAnswer: 'b',
+},
 ];
 
-const randomNum = Math.floor(Math.random() * myQuestions.length)
-const questionSelected = myQuestions[randomNum];
+// const randomNum = Math.floor(Math.random() * myQuestions.length)
+let questionSelected = '';
 
 function createQuestion() {
   // ADD QUESTION
+  questionSelected = myQuestions[Math.floor(Math.random() * myQuestions.length)];
   const questText = document.createElement('p');
   const conteudoNovo = document.createTextNode(questionSelected.question);
   questText.appendChild(conteudoNovo);
@@ -125,8 +206,12 @@ function createQuestion() {
   d.appendChild(answersD);
 }
 
-// YOU LOSE SCREEN
+const audio = new Audio('mainmusic.mp3');
 
+function stopMusic() {
+  audio.pause();
+  audio.currentTime = 0;
+}
 
 // CHECK ANSWER
 
@@ -147,11 +232,12 @@ const elementb = document.getElementById('b').id
 const elementc = document.getElementById('c').id
 const elementd = document.getElementById('d').id
 
-let score = 0;
+let questionScore = 0;
 
 function youLose2() {
   const loseScreen = document.getElementById('youlose');
 
+  stopMusic();
   loseScreen.style.display = 'block';
   setTimeout(() => {
     loseScreen.style.opacity = '1';
@@ -160,7 +246,7 @@ function youLose2() {
 
 function checkAnswerA() {
   if (elementa === questionSelected.correctAnswer) {
-    score += 1
+    questionScore += 1
     return restartGame();
   }
   return youLose2()
@@ -168,21 +254,21 @@ function checkAnswerA() {
 
 function checkAnswerB() {
   if (elementb === questionSelected.correctAnswer) {
-    score += 1
+    questionScore += 1
     return restartGame();
   }
   return youLose2()
 }
 function checkAnswerC() {
   if (elementc === questionSelected.correctAnswer) {
-    score += 1
+    questionScore += 1
     return restartGame();
   }
   return youLose2()
 }
 function checkAnswerD() {
   if (elementd === questionSelected.correctAnswer) {
-    score += 1
+    questionScore += 1
     return restartGame();
   }
   return youLose2()

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 
 // MUSIC CONTROL
@@ -7,6 +8,7 @@ function playMusic() {
     audio.play();
   }
 }
+// eslint-disable-next-line consistent-return
 function altPlayMusic() {
   if (!playMusic()) {
     return playMusic();
@@ -92,18 +94,22 @@ const batMove = ['./assets/batmove2.png', './assets/batmove3.png', './assets/bat
 
 const player = new Component(90, 132, 8, 115, 80);
 
+// CANVAS BACKGROUND IMAGES
+
 const background = new Component(0, 0);
 const background2 = new Component(0, 0);
 const background3 = new Component(0, 0);
 const background4 = new Component(0, 0);
 const backgroundFixed = new Component(0, 0);
 
+// OBSTACLES
 
 let myObstacles = [];
 let myObstacles2 = [];
 
 
 // MAIN GAME FUNCTION
+
 let frames3 = 0;
 let idx = 0;
 
@@ -194,7 +200,7 @@ const myGameArea = {
   },
 };
 
-// NEW GAME FUNCTION  
+// NEW GAME FUNCTION
 
 function newGame() {
   const loseScreen = document.getElementById('youlose');
@@ -216,7 +222,7 @@ function newGame() {
   }, 1800);
 }
 
-// OBSTACULOS
+// OBSTACLES QUESTION MARKS
 
 function updateObstacles() {
   myGameArea.frames += 1;
@@ -235,7 +241,7 @@ function updateObstacles() {
     }
   });
 }
-// OBSTACULOS2
+// OBSTACLES FIREBALLS
 
 function updateObstacles2() {
   myGameArea.frames2 += 1;
@@ -255,7 +261,7 @@ function updateObstacles2() {
   });
 }
 
-// LOSE SCREEN FUNCTION
+// LOST SCREEN FUNCTION
 
 function youLose() {
   const loseScreen = document.getElementById('youlose');
@@ -295,7 +301,6 @@ function checkGameOver() {
     myObstacles = [];
     myObstacles2 = [];
     lastCanvas.remove();
-    console.log('MORREU');
   } else if (crashed2) {
     myGameArea.stop();
     stopMusic();
@@ -305,7 +310,6 @@ function checkGameOver() {
     setTimeout(() => {
       lastCanvas.remove();
     }, 1500);
-    console.log('GAME OVER');
   }
 }
 
@@ -314,7 +318,7 @@ function checkGameOver() {
 function checkYouWin() {
   const lastCanvas = document.getElementById('canvas');
 
-  if (questionScore >= 2) {
+  if (questionScore >= 5) {
     myGameArea.stop();
     lastCanvas.remove();
     const winScreen = document.getElementById('youwin');

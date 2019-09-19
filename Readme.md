@@ -2,9 +2,9 @@
 > "The Iron Knight Game" is a game build in HTML canvas, CSS and Javascript.
 #### : https://newericg.github.io/theironknight/
 
-![](assets/Game1.png)
-![](assets/Game2.png)
-![](assets/Game3.png)
+![](./assets/Game1.png)
+![](./assets/Game2.png)
+![](./assets/Game3.png)
 
 ## Installation
 

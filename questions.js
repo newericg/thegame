@@ -199,7 +199,7 @@ const myQuestions = [{
     c: '1h30',
     d: '30min',
   },
-  correctAnswer: 'b',
+  correctAnswer: 'a',
 },
 // {
 //   question: 'If there are 3 apples and you take away 2, how many do you have?',

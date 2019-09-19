@@ -206,12 +206,21 @@ function createQuestion() {
   d.appendChild(answersD);
 }
 
+const audioGameOver = new Audio('gameover.mp3');
 const audio = new Audio('mainmusic.mp3');
+audio.volume = 0.4;
 
 function stopMusic() {
   audio.pause();
   audio.currentTime = 0;
 }
+
+function gameOver() {
+  setTimeout(() => {
+    audioGameOver.play();
+  }, 100);
+}
+
 
 // CHECK ANSWER
 
@@ -226,7 +235,6 @@ function restartGame() {
   }, 2000);
 }
 
-
 const elementa = document.getElementById('a').id
 const elementb = document.getElementById('b').id
 const elementc = document.getElementById('c').id
@@ -234,7 +242,7 @@ const elementd = document.getElementById('d').id
 
 let questionScore = 0;
 
-function youLose2() {
+function youLoose2() {
   const loseScreen = document.getElementById('youlose');
 
   stopMusic();
@@ -244,12 +252,17 @@ function youLose2() {
   }, 200);
 }
 
+function looseScreen() {
+  gameOver()
+  youLoose2()
+}
+
 function checkAnswerA() {
   if (elementa === questionSelected.correctAnswer) {
     questionScore += 1
     return restartGame();
   }
-  return youLose2()
+  return looseScreen()
 }
 
 function checkAnswerB() {
@@ -257,19 +270,19 @@ function checkAnswerB() {
     questionScore += 1
     return restartGame();
   }
-  return youLose2()
+  return looseScreen()
 }
 function checkAnswerC() {
   if (elementc === questionSelected.correctAnswer) {
     questionScore += 1
     return restartGame();
   }
-  return youLose2()
+  return looseScreen()
 }
 function checkAnswerD() {
   if (elementd === questionSelected.correctAnswer) {
     questionScore += 1
     return restartGame();
   }
-  return youLose2()
+  return looseScreen()
 }

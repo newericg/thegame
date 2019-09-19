@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 
 // MUSIC CONTROL
 
@@ -15,6 +16,22 @@ function altPlayMusic() {
 function stopMusic() {
   audio.pause();
 }
+
+const audioRiddler = new Audio('riddlertalk.mp3');
+const audioBatman = new Audio('batmantalk.mp3');
+
+function playRiddler() {
+  setTimeout(() => {
+    audioRiddler.play();
+  }, 800);
+}
+
+function playBatman() {
+  setTimeout(() => {
+    audioBatman.play();
+  }, 2000);
+}
+
 
 // CANVAS GAME
 
@@ -70,7 +87,10 @@ class Component {
   }
 }
 
-const player = new Component(90, 132, 8, 155, 105);
+const batMove = ['./assets/batmove1.png', './assets/batmove2.png', './assets/batmove3.png', './assets/batmove4.png'];
+
+
+const player = new Component(90, 132, 8, 115, 85);
 
 const background = new Component(0, 0);
 const background2 = new Component(0, 0);
@@ -84,6 +104,8 @@ let myObstacles2 = [];
 
 
 // MAIN GAME FUNCTION
+let frames3 = 0;
+let idx = 0;
 
 const myGameArea = {
   frames: 0,
@@ -103,6 +125,7 @@ const myGameArea = {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   },
   update() {
+    frames3 += 1;
     const ctx = myGameArea.context;
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -147,10 +170,20 @@ const myGameArea = {
     this.bg = new Image();
     this.bg.src = './assets/7.png';
     ctx.drawImage(this.bg, backgroundFixed.x, background.y, this.canvas.width, this.canvas.height);
+
     this.img = new Image();
-    this.img.src = './assets/batman4.png';
+    if (frames3 % 15 === 0) {
+      if (idx === 3) {
+        idx = 0;
+      } else {
+        idx += 1;
+      }
+    }
+    this.img.src = batMove[idx];
     // eslint-disable-next-line no-use-before-define
-    ctx.drawImage(this.img, player.x, player.y, 225, 145);
+    ctx.drawImage(this.img, player.x, player.y, 155, 105);
+
+
     ctx.font = '30px Verdana';
     // Fill with gradient
     ctx.fillStyle = '#3FA146';
@@ -161,7 +194,7 @@ const myGameArea = {
   },
 };
 
-// NEW GAME FUNCTION
+// NEW GAME FUNCTION  
 
 function newGame() {
   const loseScreen = document.getElementById('youlose');
@@ -267,6 +300,7 @@ function checkGameOver() {
     myGameArea.stop();
     stopMusic();
     youLose();
+    gameOver();
     questionScore = 0;
     lastCanvas.remove();
     console.log('GAME OVER');
@@ -323,11 +357,17 @@ function startGame() {
   const darkBG = document.getElementById('bg-fundo'); // BLACK START BACKGROUND
   const firstInt = document.getElementById('interaction_1');
   const riddle = document.getElementById('riddle1');
+  const riddleText = document.getElementById('riddle-dialog');
 
   darkBG.style.backgroundColor = 'rgba(0, 0, 0, 0)'; // MAKE BLACK BG TRANSPARENT
   start.style.visibility = 'hidden';
   firstInt.style.opacity = '1';
   riddle.style.opacity = '1';
+  riddleText.style.opacity = '1';
+
+  // RIDDLER TALK
+
+  playRiddler();
 
   // REMOVE BLACK BG ELEMENT
   setTimeout(() => {
@@ -342,15 +382,21 @@ document.addEventListener('keydown', (event) => {
   const blackBG = document.createElement('div');
   const bodyElem = document.body;
   const instru = document.getElementById('instruc-text');
+  const riddleText = document.getElementById('riddle-dialog');
+  const batmanText = document.getElementById('batman-dialog');
 
 
   if (event.keyCode === 32) {
     if (riddle.style.opacity === '1') {
+      riddleText.style.opacity = '0';
       riddle.style.opacity = '0';
       batman.style.opacity = '1';
       secondInt.style.opacity = '1';
+      batmanText.style.opacity = '1';
+      playBatman();
     } else if (batman.style.opacity === '1') {
       batman.style.opacity = '0';
+      batmanText.style.opacity = '0';
       secondInt.style.opacity = '0';
       blackBG.id = 'bg-fundo2';
       bodyElem.appendChild(blackBG);
@@ -358,11 +404,13 @@ document.addEventListener('keydown', (event) => {
       // REMOVE BATMAN1
       setTimeout(() => {
         batman.remove();
+        batmanText.remove();
       }, 2600);
 
       // REMOVE RIDDLE1
       setTimeout(() => {
         riddle.remove();
+        riddleText.remove();
       }, 1500);
 
       // CREATE NEW BG TRANSPARENT

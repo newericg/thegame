@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-	
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -32,7 +32,8 @@
 							<img src="./assets/batmanlogo2.gif" alt="logo">
 						</div>
 						<div class="col-12 d-flex align-items-top justify-content-center">
-							<button type="button" class="btn btn-outline-dark btn-lg start-button" onclick="startGame(); playMusic()">START
+							<button type="button" class="btn btn-outline-dark btn-lg start-button"
+								onclick="startGame(), altPlayMusic()">START
 								GAME
 							</button>
 						</div>
@@ -57,6 +58,20 @@
 		</div>
 	</div>
 
+	<div id="riddle-dialog" class="container-fluid">
+		<div class="row row_3 d-flex justify-content-end">
+			<div class="col-4 mt-3 pt-4 pl-5 riddle-text">
+				<p>
+					I begin and have no end.
+					And i end all that begins.
+					Who am i?
+
+					Press Space
+				</p>
+			</div>
+		</div>
+	</div>
+
 	<!--BATMAN FIRST DIALOG-->
 	<div id='batman1' class="container-fluid">
 		<div class="row row_1">
@@ -71,16 +86,29 @@
 		</div>
 	</div>
 
+	<div id="batman-dialog" class="container-fluid">
+			<div class="row row_3 d-flex justify-content-start">
+				<div class="col-4 mt-4 pt-4 batman-text">
+					<p>You don't know me Riddler.
+						You have no idea of what you're up 
+						against.
+
+						Press Space
+					</p>
+				</div>
+			</div>
+		</div>
+
 	<!-- INSTRUCTIONS TEXT -->
 	<div id="instruc-text" class="container-fluid">
 		<div class="row row_1 d-flex justify-content-center align-items-center">
-			<div class="col-6">
+			<div class="col-6 d-flex justify-content-center">
 				<h3 class="instruc-text-style">
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo aspernatur possimus totam numquam ea distinctio
-					ab modi sequi, iusto deserunt!
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque tempore dolorum, eum repudiandae quaerat ab
-					minima. Possimus nisi, placeat commodi saepe, libero assumenda at praesentium suscipit iste consequuntur
-					asperiores nostrum. <br>
+					-> Dodge the fireballs
+					-> Collect the question marks
+					-> Answer 5 correct questions
+					-> Defeat the Riddler
+
 					PRESS SPACE TO BEGIN THE GAME
 
 				</h3>
@@ -117,7 +145,7 @@
 		</div>
 	</div>
 
- <!-- LOSE GAME SCREEN -->
+	<!-- LOSE GAME SCREEN -->
 	<div id="youlose" class="container-fluid">
 		<div class="row row_3 d-flex justify-content-center">
 			<div class="col-8 game-over">
@@ -128,9 +156,9 @@
 						</h1>
 					</div>
 					<div class="col-12 d-flex align-items-start justify-content-center">
-							<button onclick="newGame()" type="button" class="btn btn-danger btn-lg">
+						<button onclick="newGame()" type="button" class="btn btn-danger btn-lg">
 							<h2>RESTART GAME</h2>
-							</button>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -140,23 +168,23 @@
 	<!-- YOU WIN SCREEN -->
 
 	<div id="youwin" class="container-fluid">
-			<div class="row row_3 d-flex justify-content-center">
-				<div class="col-8 you-win">
-					<div class="row row_3 d-flex justify-content-center">
-						<div class="col-12 d-flex align-items-end text-center justify-content-center">
-							<h1>
-								YOU WIN
-							</h1>
-						</div>
-						<div class="col-12 d-flex align-items-start justify-content-center">
-								<button onclick="stopMusic(); location.reload()" type="button" class="btn btn-outline-dark btn-lg">
-								<h2>NEW GAME</h2>
-								</button>
-						</div>
+		<div class="row row_3 d-flex justify-content-center">
+			<div class="col-8 you-win">
+				<div class="row row_3 d-flex justify-content-center">
+					<div class="col-12 d-flex align-items-end text-center justify-content-center">
+						<h1>
+							YOU WIN
+						</h1>
+					</div>
+					<div class="col-12 d-flex align-items-start justify-content-center">
+						<button onclick="stopMusic(); location.reload()" type="button" class="btn btn-outline-dark btn-lg">
+							<h2>NEW GAME</h2>
+						</button>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
 
 

@@ -15,7 +15,7 @@ class Obstacles {
   draw() {
     this.img = new Image();
     this.img.src = './assets/riddlerlogo.png';
-    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.img, this.x, this.y, 50, 50);
   }
 
   left() {

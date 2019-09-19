@@ -99,8 +99,8 @@ body {
     font-family: "Courier";
     font-size: 15px;
     white-space: pre-line;
+    animation-duration: 2s;
 }
-  
 
 #interaction_1 {
     opacity: 0;
@@ -191,7 +191,11 @@ body {
     font-family: "Courier";
 }
 
-/* QUESTIOS STYLES */
+.keyboard-img img {
+    width: 35%;
+}
+
+/* QUESTIONS STYLES */
 
 
 #questions {

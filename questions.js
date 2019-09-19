@@ -2,12 +2,12 @@
 /* eslint-disable no-console */
 /* eslint-disable semi */
 const myQuestions = [{
-  question: 'Who is the strongest?',
+  question: 'Which weighs more, a pound of feathers or a pound of bricks?',
   answers: {
-    a: 'Superman',
-    b: 'The Terminator',
-    c: 'Waluigi, obviously',
-    d: 'What',
+    a: 'Feathers',
+    b: 'Bricks',
+    c: 'Both',
+    d: 'F* you Riddler',
   },
   correctAnswer: 'c',
 },
@@ -25,7 +25,7 @@ const myQuestions = [{
   question: 'Look in my face, I am somebody; Look in my back, I am nobody. What am I?',
   answers: {
     a: 'Mirror',
-    b: 'Mr. M',
+    b: 'Face',
     c: 'You',
     d: 'No one',
   },
@@ -35,7 +35,7 @@ const myQuestions = [{
   question: 'What goes up but never comes down?',
   answers: {
     a: 'Age',
-    b: 'Rocket',
+    b: 'Baloon',
     c: 'Smoke',
     d: 'Your ego',
   },
@@ -124,53 +124,103 @@ const myQuestions = [{
 {
   question: 'Feed me and I will live, but give me a drink and I will die. What am I?',
   answers: {
-    a: '1st',
-    b: '',
+    a: 'Water',
+    b: 'Wind',
     c: 'Ice',
     d: 'Fire',
   },
   correctAnswer: 'd',
 },
 {
-  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  question: 'Who makes it, has no need of it. Who buys it, has no use for it. Who uses it can neither see nor feel it. What is it?',
   answers: {
-    a: '1st',
-    b: '2nd',
-    c: '3rd',
-    d: '4th',
+    a: 'Coffin',
+    b: 'Coin',
+    c: 'Chocolate',
+    d: 'Death',
+  },
+  correctAnswer: 'a',
+},
+{
+  question: 'You can drop me from the tallest building and Ill be fine, but if you drop me in water I die. What am I?',
+  answers: {
+    a: 'Paper',
+    b: 'Sugar',
+    c: 'Salt',
+    d: 'Light',
+  },
+  correctAnswer: 'a',
+},
+{
+  question: 'How many of each species did Moses take on the ark with him?',
+  answers: {
+    a: 'One',
+    b: 'Two',
+    c: 'Three',
+    d: 'None',
+  },
+  correctAnswer: 'd',
+},
+{
+  question: 'If there are 3 apples and you take away 2, how many do you have?',
+  answers: {
+    a: '1',
+    b: '2',
+    c: '3',
+    d: '5',
   },
   correctAnswer: 'b',
 },
 {
-  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  question: 'You just bought a cute rabbit at a pet store. The rabbit can breed once every month, and deliver 7 babies at a time. How many rabbits do you have after 12 months?',
   answers: {
-    a: '1st',
-    b: '2nd',
-    c: '3rd',
-    d: '4th',
+    a: '1',
+    b: '2',
+    c: '14',
+    d: '84',
+  },
+  correctAnswer: 'a',
+},
+{
+  question: 'I am born of water but when I return to water, I die. What am I?',
+  answers: {
+    a: 'Fish',
+    b: 'Ice',
+    c: 'Water',
+    d: 'Air',
   },
   correctAnswer: 'b',
 },
 {
-  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
+  question: 'A doctor gives you three pills and tells you to take one every 30 minutes. How long does it take to run out of pills?',
   answers: {
-    a: '1st',
-    b: '2nd',
-    c: '3rd',
-    d: '4th',
+    a: '1h',
+    b: '2h',
+    c: '1h30',
+    d: '30min',
   },
   correctAnswer: 'b',
 },
-{
-  question: 'If you were running a race, and you passed the person in 2nd place, what place would you be in now?',
-  answers: {
-    a: '1st',
-    b: '2nd',
-    c: '3rd',
-    d: '4th',
-  },
-  correctAnswer: 'b',
-},
+// {
+//   question: 'If there are 3 apples and you take away 2, how many do you have?',
+//   answers: {
+//     a: '1',
+//     b: '2',
+//     c: '3',
+//     d: '5',
+//   },
+//   correctAnswer: 'b',
+// },
+// {
+//   question: 'If there are 3 apples and you take away 2, how many do you have?',
+//   answers: {
+//     a: '1',
+//     b: '2',
+//     c: '3',
+//     d: '5',
+//   },
+//   correctAnswer: 'b',
+// },
 ];
 
 // const randomNum = Math.floor(Math.random() * myQuestions.length)

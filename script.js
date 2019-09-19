@@ -71,7 +71,7 @@ class Component {
   }
 
   top() {
-    return this.y;
+    return this.y - this.height;
   }
 
   bottom() {
@@ -87,10 +87,10 @@ class Component {
   }
 }
 
-const batMove = ['./assets/batmove1.png', './assets/batmove2.png', './assets/batmove3.png', './assets/batmove4.png'];
+const batMove = ['./assets/batmove2.png', './assets/batmove3.png', './assets/batmove4.png'];
 
 
-const player = new Component(90, 132, 8, 115, 85);
+const player = new Component(90, 132, 8, 115, 80);
 
 const background = new Component(0, 0);
 const background2 = new Component(0, 0);
@@ -173,7 +173,7 @@ const myGameArea = {
 
     this.img = new Image();
     if (frames3 % 15 === 0) {
-      if (idx === 3) {
+      if (idx === 2) {
         idx = 0;
       } else {
         idx += 1;
@@ -225,7 +225,7 @@ function updateObstacles() {
   const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
   if (myGameArea.frames % 120 === 0) {
     // eslint-disable-next-line no-undef
-    myObstacles.push(new Obstacles(40, 40, 1020, randomNumber, myGameArea.context));
+    myObstacles.push(new Obstacles(-70, -70, 1020, randomNumber, myGameArea.context));
   }
   myObstacles.forEach((obstacle, index) => {
     obstacle.draw();
@@ -244,7 +244,7 @@ function updateObstacles2() {
   const randomNumber = Math.floor(Math.random() * (maxHeight - minHeight + 1) + minHeight);
   if (myGameArea.frames2 % 60 === 0) {
     // eslint-disable-next-line no-undef
-    myObstacles2.push(new Obstacles2(40, 60, 1020, randomNumber, myGameArea.context));
+    myObstacles2.push(new Obstacles2(-50, -50, 1020, randomNumber, myGameArea.context));
   }
   myObstacles2.forEach((obstacle, index) => {
     obstacle.draw();
@@ -302,7 +302,9 @@ function checkGameOver() {
     youLose();
     gameOver();
     questionScore = 0;
-    lastCanvas.remove();
+    setTimeout(() => {
+      lastCanvas.remove();
+    }, 1500);
     console.log('GAME OVER');
   }
 }

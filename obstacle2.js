@@ -15,7 +15,7 @@ class Obstacles2 {
   draw() {
     this.img = new Image();
     this.img.src = './assets/fireball.png';
-    this.ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    this.ctx.drawImage(this.img, this.x, this.y, 60, 60);
   }
 
   left() {

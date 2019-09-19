@@ -9,7 +9,7 @@ class Obstacles2 {
   }
 
   move() {
-    this.x -= 5;
+    this.x -= 8;
   }
 
   draw() {

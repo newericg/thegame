@@ -192,7 +192,7 @@ const myGameArea = {
 
     ctx.font = '30px Verdana';
     // Fill with gradient
-    ctx.fillStyle = '#3FA146';
+    ctx.fillStyle = 'black';
     ctx.fillText(`CORRECT QUESTIONS : ${questionScore}`, 600, 50);
   },
   stop() {

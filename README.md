@@ -15,14 +15,11 @@ Clone or download this project, open the index.html file in your browser and hav
 Instructions to play this game:
 
 * Use your Keyboard
-* Enter Key is used to Begin the game, pause and resume
-* Up Key to go foward
-* Down key to go back
-* Left Key to go left... Duh
-* Right Key to... You already understand
-* CTRL Key to Attack (closely... very closely)
-* Shift Key to Speed up (just a bit)
-* Slash the Bugs =]
+* Use arrow Up and Down do move the player.
+* Dodge the fireballs
+* Collect the question marks
+* Answer the questions correct.
+* Defeat the Riddler.
 
 ## Release History
 
@@ -49,21 +46,4 @@ Instructions to play this game:
     * CHANGE: Little squares are added
 * 0.0.1
     * Initial files added
-
-## Meta
-
-Heitor Godau – [@heitorgodau](https://twitter.com/heitorgodau) – heitorgodau@gmail.com
-
-Distributed under the Creative Commons license - Attribution-NonCommercial 4.0 International (CC BY-NC 4.0). See CC LICENSE for more information.
-
-[https://github.com/heitorgodau/github-link](https://github.com/heitorgodau/)
-
-## Contributing
->This is a free software, feel free to contribute in any way you want
-
-1. Fork it (<https://github.com/heitorgodau/IronQuest-The-Game/fork>)
-2. Create your feature branch (`git checkout -b feature/fooBar`)
-3. Commit your changes (`git commit -am 'Add some fooBar'`)
-4. Push to the branch (`git push origin feature/fooBar`)
-5. Create a new Pull Request
 

@@ -23,27 +23,22 @@ Instructions to play this game:
 
 ## Release History
 
-* 1.2.2
-    * CHANGE: Text font inside the game was alterated
 * 1.2.1
     * CHANGE: Minor bugs fixed
 * 1.2.0
-    * CHANGE: Enemys lifebar are implemented
+    * CHANGE: Questions count added
 * 1.1.0
     * CHANGE: Background music and sound FX are implemented
 * 1.0.0
     * First functional release
 * 0.4.0
-    * CHANGE:  Hero, Enemy and Background design are implemented
-* 0.3.1
-    * FIX: Hero moviment bugs
-    * FIX: Hero/enemy collision
+    * CHANGE: Questions screen added
 * 0.3.0
     * CHANGE: Collision logic was implemented
 * 0.2.0
-    * CHANGE: Enemys and Hero moviment was implemented 
+    * CHANGE: Canvas added.
 * 0.1.0
-    * CHANGE: Little squares are added
+    * CHANGE: History Screen added
 * 0.0.1
     * Initial files added
 

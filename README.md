@@ -8,8 +8,7 @@
 
 ## Installation
 
-Clone or download this project, open the index.html file in your browser and have Fun. Or just click in this [link](https://heitorgodau.github.io/ironquest-the-game/)!
-
+Clone or download this project, open the index.html file in your browser and have Fun.
 ## Usage example
 
 Instructions to play this game:
